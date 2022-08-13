@@ -28,7 +28,7 @@ class TestLinkedList(unittest.TestCase):
         llist.insert_after_node(llist.head.next, "D")
         self.assertEqual(llist.get_list(), ["A", "B", "D", "C"])
 
-    # Deletion
+    # Deletion by value
     def test_deletion(self):
         llist = LinkedList()
         llist.append("A")
@@ -38,6 +38,17 @@ class TestLinkedList(unittest.TestCase):
         llist.delete_node("B")
         llist.delete_node("E")
         self.assertEqual(llist.get_list(), ["A", "C", "D"])
+
+    # Deletion by position
+    def test_delete_node_at_pos(self):
+        llist = LinkedList()
+        llist.append("A")
+        llist.append("B")
+        llist.append("C")
+        llist.append("D")
+        llist.delete_node_at_pos(0)
+        llist.delete_node_at_pos(1)
+        self.assertEqual(llist.get_list(), ["B", "D"])
 
 
 if __name__ == "__main__":

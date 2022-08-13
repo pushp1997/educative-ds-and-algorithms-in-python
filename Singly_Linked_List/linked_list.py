@@ -4,7 +4,7 @@ from typing import Any, List
 class Node:
     def __init__(self, data: Any) -> None:
         self.data = data
-        self.next = None
+        self.next: Node = None
 
 
 class LinkedList:
@@ -63,6 +63,25 @@ class LinkedList:
                 return
             # If any other node is a match
             elif cur_node.data == data and prev_node:
+                prev_node.next = cur_node.next
+                del cur_node
+                return
+            else:
+                prev_node = cur_node
+                cur_node = cur_node.next
+
+    def delete_node_at_pos(self, pos: int) -> None:
+        """Delete node at a position in the list"""
+        cur_node = self.head
+        if pos == 0 and cur_node:
+            self.head = cur_node.next
+            del cur_node
+            return
+        prev_node = cur_node
+        cur_node = cur_node.next
+        cur_pos = 1
+        while cur_node:
+            if cur_pos == pos:
                 prev_node.next = cur_node.next
                 del cur_node
                 return
