@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 
 class Node:
@@ -17,16 +17,25 @@ class LinkedList:
             print(cur_node.data)
             cur_node = cur_node.next
 
+    def get_list(self) -> List[Any]:
+        ret_list = []
+        cur_node = self.head
+        while cur_node:
+            ret_list.append(cur_node.data)
+            cur_node = cur_node.next
+        return ret_list
+
     # Insertions
     def append(self, data: Any) -> None:
         """Append a new node at the end of the linked list"""
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
-        last_node = self.head
-        while last_node.next:
-            last_node = last_node.next
-        last_node.next = new_node
+        else:
+            last_node = self.head
+            while last_node.next:
+                last_node = last_node.next
+            last_node.next = new_node
 
     def prepend(self, data: Any) -> None:
         """Prepend a new node at the beginning of the linked list"""
