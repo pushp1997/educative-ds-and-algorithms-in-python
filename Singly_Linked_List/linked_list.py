@@ -88,3 +88,19 @@ class LinkedList:
             else:
                 prev_node = cur_node
                 cur_node = cur_node.next
+
+    # Find length by iteration
+    def find_length_by_loop(self) -> int:
+        length = 0
+        cur_node = self.head
+
+        while cur_node:
+            length += 1
+            cur_node = cur_node.next
+        return length
+
+    # Find length by recursion
+    def find_length_by_recursion(self, node: Node) -> int:
+        if node is None:
+            return 0
+        return 1 + self.find_length_by_recursion(node.next)
