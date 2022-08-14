@@ -1,5 +1,6 @@
 import unittest
 
+from Singly_Linked_List.swap import swap_nodes
 from Singly_Linked_List.linked_list import LinkedList
 
 
@@ -69,6 +70,30 @@ class TestLinkedList(unittest.TestCase):
         llist.append("C")
         llist.append("D")
         self.assertEqual(llist.find_length_by_recursion(llist.head), 4)
+
+    # Node Swap
+    def test_swap_nodes(self):
+        llist = LinkedList()
+        llist.append("A")
+        llist.append("B")
+        llist.append("C")
+        llist.append("D")
+
+        swap_nodes(llist, "B", "C")
+        # Swapping nodes B and C that are not head nodes
+        self.assertEqual(llist.get_list(), ["A", "C", "B", "D"])
+
+        swap_nodes(llist, "A", "B")
+        # Swapping nodes A and B where key_1 is head node
+        self.assertEqual(llist.get_list(), ["B", "C", "A", "D"])
+
+        swap_nodes(llist, "D", "B")
+        # Swapping nodes D and B where key_2 is head node
+        self.assertEqual(llist.get_list(), ["D", "C", "A", "B"])
+
+        swap_nodes(llist, "C", "C")
+        # Swapping nodes C and C where both keys are same
+        self.assertEqual(llist.get_list(), ["D", "C", "A", "B"])
 
 
 if __name__ == "__main__":
