@@ -2,6 +2,7 @@ import unittest
 
 from Singly_Linked_List.swap import swap_nodes
 from Singly_Linked_List.linked_list import LinkedList
+from Singly_Linked_List.reverse import reverse_using_loop, reverse_using_recursion
 
 
 class TestLinkedList(unittest.TestCase):
@@ -94,6 +95,28 @@ class TestLinkedList(unittest.TestCase):
         swap_nodes(llist, "C", "C")
         # Swapping nodes C and C where both keys are same
         self.assertEqual(llist.get_list(), ["D", "C", "A", "B"])
+
+    # Reverse using iterative method
+    def test_reverse_using_loop(self):
+        llist = LinkedList()
+        llist.append("A")
+        llist.append("B")
+        llist.append("C")
+        llist.append("D")
+
+        reverse_using_loop(llist)
+        self.assertEqual(llist.get_list(), ["D", "C", "B", "A"])
+
+    # Reverse using recursive method
+    def test_reverse_using_recursion(self):
+        llist = LinkedList()
+        llist.append("A")
+        llist.append("B")
+        llist.append("C")
+        llist.append("D")
+
+        llist.head = reverse_using_recursion(llist.head)
+        self.assertEqual(llist.get_list(), ["D", "C", "B", "A"])
 
 
 if __name__ == "__main__":

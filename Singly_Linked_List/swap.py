@@ -1,5 +1,5 @@
 from typing import Any
-from Singly_Linked_List.linked_list import LinkedList, Node
+from Singly_Linked_List.linked_list import LinkedList
 
 # Swap 2 nodes
 def swap_nodes(llist: LinkedList, data1: Any, data2: Any) -> None:
