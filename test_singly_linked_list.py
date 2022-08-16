@@ -5,6 +5,7 @@ from Singly_Linked_List.linked_list import LinkedList
 from Singly_Linked_List.reverse import reverse_using_loop, reverse_using_recursion
 from Singly_Linked_List.merge_sorted_lists import merge_sorted, merge_sorted_inplace
 from Singly_Linked_List.remove_duplicates import remove_duplicates
+from Singly_Linked_List.nth_from_last import nth_from_last
 
 
 class TestLinkedList(unittest.TestCase):
@@ -158,7 +159,7 @@ class TestLinkedList(unittest.TestCase):
         merge_sorted_inplace(llist1, llist2)
         self.assertEqual(llist1.get_list(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-    # Merge 2 sorted list inplace
+    # Remove duplicate elements in the list
     def test_remove_duplicates(self):
         llist = LinkedList()
         llist.append(1)
@@ -171,6 +172,17 @@ class TestLinkedList(unittest.TestCase):
 
         remove_duplicates(llist)
         self.assertEqual(llist.get_list(), [1, 6, 4, 2])
+
+    # nth element from the last in the list
+    def test_nth_from_last(self):
+        llist = LinkedList()
+        llist.append("A")
+        llist.append("B")
+        llist.append("C")
+        llist.append("D")
+
+        self.assertEqual(nth_from_last(llist, 2), "C")
+        self.assertEqual(nth_from_last(llist, 3), "B")
 
 
 if __name__ == "__main__":
