@@ -3,6 +3,8 @@ import unittest
 from Singly_Linked_List.swap import swap_nodes
 from Singly_Linked_List.linked_list import LinkedList
 from Singly_Linked_List.reverse import reverse_using_loop, reverse_using_recursion
+from Singly_Linked_List.merge_sorted_lists import merge_sorted, merge_sorted_inplace
+from Singly_Linked_List.remove_duplicates import remove_duplicates
 
 
 class TestLinkedList(unittest.TestCase):
@@ -117,6 +119,58 @@ class TestLinkedList(unittest.TestCase):
 
         llist.head = reverse_using_recursion(llist.head)
         self.assertEqual(llist.get_list(), ["D", "C", "B", "A"])
+
+    # Merge 2 sorted list
+    def test_merge_sorted(self):
+        llist1 = LinkedList()
+        llist2 = LinkedList()
+        llist1.append(1)
+        llist1.append(5)
+        llist1.append(7)
+        llist1.append(9)
+        llist1.append(10)
+
+        llist2.append(2)
+        llist2.append(3)
+        llist2.append(4)
+        llist2.append(6)
+        llist2.append(8)
+
+        sorted_list = merge_sorted(llist1, llist2)
+        self.assertEqual(sorted_list.get_list(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+    # Merge 2 sorted list inplace
+    def test_merge_sorted_inplace(self):
+        llist1 = LinkedList()
+        llist2 = LinkedList()
+        llist1.append(1)
+        llist1.append(5)
+        llist1.append(7)
+        llist1.append(9)
+        llist1.append(10)
+
+        llist2.append(2)
+        llist2.append(3)
+        llist2.append(4)
+        llist2.append(6)
+        llist2.append(8)
+
+        merge_sorted_inplace(llist1, llist2)
+        self.assertEqual(llist1.get_list(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+    # Merge 2 sorted list inplace
+    def test_remove_duplicates(self):
+        llist = LinkedList()
+        llist.append(1)
+        llist.append(6)
+        llist.append(1)
+        llist.append(4)
+        llist.append(2)
+        llist.append(2)
+        llist.append(4)
+
+        remove_duplicates(llist)
+        self.assertEqual(llist.get_list(), [1, 6, 4, 2])
 
 
 if __name__ == "__main__":
